@@ -1,0 +1,78 @@
+.pageHero {
+  padding: clamp(2rem, 6vw, 5rem) 0 clamp(1.5rem, 4vw, 3rem);
+}
+
+.pageHero h1 {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 6vw, 3.4rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.split {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.splitReverse {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.gallery {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.stack {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.contactGrid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.aside {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.asideList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-ink-muted);
+  line-height: 1.7;
+}
+
+.asideList strong {
+  color: var(--color-ink);
+}
+
+@media (min-width: 900px) {
+  .split {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 3rem;
+  }
+
+  .splitReverse {
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 3rem;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contactGrid {
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: start;
+  }
+}
