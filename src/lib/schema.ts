@@ -17,7 +17,17 @@ function organizationNode(): Record<string, unknown> {
     name: siteConfig.name,
     legalName: siteConfig.legalName,
     url: siteConfig.url,
+    email: siteConfig.email,
+    telephone: siteConfig.phone,
     servesCuisine: "Coffee",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: siteConfig.address.street,
+      addressLocality: siteConfig.address.city,
+      addressRegion: siteConfig.address.region,
+      postalCode: siteConfig.address.postalCode,
+      addressCountry: siteConfig.address.country,
+    },
     hasMenu: siteConfig.orderUrl,
     logo: {
       "@type": "ImageObject",

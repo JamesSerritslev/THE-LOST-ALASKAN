@@ -5,16 +5,28 @@ import styles from "./Footer.module.css";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const { address } = siteConfig;
+  const destination = `${address.street}, ${address.city}, ${address.region} ${address.postalCode}`;
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`;
+  const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(destination)}&z=16&output=embed`;
 
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div>
-          <img
-            className={styles.logo}
-            src="/images/drive-download-20261014T165754Z-1-001/TLA%20LOGO%20Not%20Good%20Damn%20Good.png"
-            alt="The Lost Alaskan bear with a coffee, saying not good, damn good coffee."
+          <iframe
+            className={styles.map}
+            title="Map to The Lost Alaskan at 232 N Main St, Kaysville"
+            src={mapUrl}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
           />
+          <p className={styles.address}>
+            {address.street}, {address.city}, {address.region} {address.postalCode}
+          </p>
+          <a className={`btn btn-primary ${styles.directions}`} href={directionsUrl} rel="noopener noreferrer">
+            Get directions
+          </a>
           <p className={styles.brand}>{siteConfig.name}</p>
           <p className={styles.tagline}>{siteConfig.tagline}</p>
           <p className={styles.follow}>Follow us!</p>

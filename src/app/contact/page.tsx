@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { JsonLd } from "@/components/JsonLd";
-import { PlaceholderImage } from "@/components/PlaceholderImage";
 import { buildPageGraph, toJsonLd } from "@/lib/schema";
 import { buildMetadata, siteConfig } from "@/lib/site";
 import styles from "../content.module.css";
@@ -17,7 +16,7 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default function ContactPage() {
-  const { orderUrl } = siteConfig;
+  const { address, email, orderUrl, phone } = siteConfig;
 
   const jsonLd = toJsonLd(
     buildPageGraph({
@@ -69,22 +68,20 @@ export default function ContactPage() {
           </div>
 
           <aside className={styles.aside}>
-            <PlaceholderImage
-              id={10}
-              src="/images/drive-download-20261014T165720Z-1-001/Wicked%20Wolf%2012oz_Little%20Red%20Book%20Basket%20in%20woods.jpg"
-              alt="A basket in the woods holding Wicked Wolf coffee, apples, and an open storybook"
-              width={800}
-              height={560}
-              priority
-            />
             <ul className={styles.asideList}>
               <li>
-                <strong>Order:</strong>{" "}
-                <a href={orderUrl}>Order online</a>
+                <strong>Address:</strong> {address.street}, {address.city},{" "}
+                {address.region} {address.postalCode}
               </li>
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Consectetur adipiscing elit</li>
-              <li>Sed do eiusmod tempor</li>
+              <li>
+                <strong>Phone:</strong> <a href="tel:+13853584851">{phone}</a>
+              </li>
+              <li>
+                <strong>Email:</strong> <a href={`mailto:${email}`}>{email}</a>
+              </li>
+              <li>
+                <strong>Order:</strong> <a href={orderUrl}>Order online</a>
+              </li>
             </ul>
           </aside>
         </div>

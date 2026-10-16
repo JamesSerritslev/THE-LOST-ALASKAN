@@ -20,6 +20,15 @@ export const siteConfig = {
   locale: "en_US",
   /** Extra locales for hreflang when you add translations; leave empty for single-locale sites. */
   alternateLocales: [] as string[],
+  email: "damngoodcoffee@thelostalaskan.com",
+  phone: "(385) 358-4851",
+  address: {
+    street: "232 N Main St",
+    city: "Kaysville",
+    region: "UT",
+    postalCode: "84037-1402",
+    country: "US",
+  },
   /** Online ordering page. */
   orderUrl: "https://thelostalaskan.craverapp.com/",
   /** iOS App Store listing. */
