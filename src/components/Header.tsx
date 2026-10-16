@@ -1,6 +1,5 @@
 "use client";
 
-import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,6 +12,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -38,6 +38,40 @@ export default function Header() {
   }, [menuOpen]);
 
   useEffect(() => {
+    const el = nameRef.current;
+    if (!el) return;
+
+    const fit = () => {
+      el.style.fontSize = "";
+      el.style.letterSpacing = "";
+      if (window.matchMedia("(min-width: 768px)").matches) return;
+
+      const available = el.clientWidth;
+      if (available <= 0) return;
+
+      let size = 13;
+      el.style.fontSize = `${size}px`;
+      while (size < 40 && el.scrollWidth <= available) {
+        size += 0.5;
+        el.style.fontSize = `${size}px`;
+      }
+      while (size > 13 && el.scrollWidth > available) {
+        size -= 0.5;
+        el.style.fontSize = `${size}px`;
+      }
+
+      const extra = available - el.scrollWidth;
+      const gaps = Math.max((el.textContent?.length ?? 1) - 1, 1);
+      if (extra > 2) el.style.letterSpacing = `${extra / gaps}px`;
+    };
+
+    fit();
+    const observer = new ResizeObserver(fit);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [scrolled]);
+
+  useEffect(() => {
     if (!menuOpen) return;
 
     const onPointerDown = (event: PointerEvent) => {
@@ -61,11 +95,11 @@ export default function Header() {
         <Link
           href="/"
           aria-label={`${siteConfig.name} home`}
-          className="flex min-w-0 items-center gap-2.5 text-[var(--color-cream)] sm:gap-3"
+          className={styles.brand}
         >
           <span
             className={`relative block shrink-0 overflow-hidden rounded-md bg-[var(--color-cream)] transition-all duration-300 motion-reduce:transition-none ${
-              scrolled ? "h-9 w-9" : "h-14 w-14"
+              scrolled ? "h-8 w-8 sm:h-9 sm:w-9" : "h-10 w-10 sm:h-14 sm:w-14"
             }`}
           >
             <Image
@@ -77,7 +111,7 @@ export default function Header() {
               className="object-cover"
             />
           </span>
-          <span className="truncate font-[family-name:var(--font-display)] text-base leading-none tracking-tight sm:text-xl">
+          <span ref={nameRef} className={styles.brandName}>
             {siteConfig.name}
           </span>
         </Link>
@@ -88,7 +122,6 @@ export default function Header() {
             className={styles.contactCta}
             aria-label="Order online"
           >
-            <ShoppingBag className={styles.contactIcon} strokeWidth={1.75} aria-hidden="true" />
             <span className={styles.contactLabel}>Order online</span>
           </a>
 

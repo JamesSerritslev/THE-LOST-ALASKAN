@@ -54,7 +54,7 @@ export default function ParallaxHero() {
         <div className="mt-2.5 flex w-full flex-col items-stretch gap-2 sm:mt-3 sm:flex-row sm:items-center sm:justify-center">
           <Link
             href="/product"
-            className="inline-flex min-h-10 items-center justify-center rounded-lg bg-[var(--color-accent)] px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-hover)] sm:min-h-11 sm:px-6 sm:text-base"
+            className="inline-flex min-h-10 items-center justify-center rounded-lg bg-[var(--color-caramel)] px-5 py-2 text-sm font-semibold text-[#fffaf4] transition-colors hover:bg-[var(--color-accent-hover)] hover:text-[#fffaf4] sm:min-h-11 sm:px-6 sm:text-base"
           >
             See the menu
           </Link>

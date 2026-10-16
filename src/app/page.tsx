@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AppLinks } from "@/components/AppLinks";
 import { JsonLd } from "@/components/JsonLd";
 import ParallaxHero from "@/components/ParallaxHero";
 import { PlaceholderImage } from "@/components/PlaceholderImage";
@@ -89,6 +90,12 @@ export default function HomePage() {
     <main>
       <JsonLd data={jsonLd} />
       <ParallaxHero />
+
+      <section className="section" aria-label="App Links" style={{ paddingBottom: 0 }}>
+        <div className="container">
+          <AppLinks />
+        </div>
+      </section>
 
       <section className="section" aria-labelledby="home-intro-heading">
         <div className={`container ${styles.split}`}>

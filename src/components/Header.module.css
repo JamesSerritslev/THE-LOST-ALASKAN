@@ -1,3 +1,35 @@
+.brand {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brandName {
+  flex: 1 1 0;
+  min-width: 0;
+  color: var(--color-cream);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .brand {
+    gap: 0.75rem;
+  }
+
+  .brandName {
+    font-size: 1.7rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+}
+
 .actions {
   display: flex;
   flex-shrink: 0;
@@ -50,14 +82,9 @@
   transform: translateY(-1px);
 }
 
-.contactIcon {
-  width: 1.15rem;
-  height: 1.15rem;
-  flex-shrink: 0;
-}
-
 .contactLabel {
-  display: none;
+  display: inline;
+  white-space: nowrap;
 }
 
 @media (min-width: 768px) {
@@ -69,10 +96,6 @@
     order: 2;
     min-height: 2.65rem;
     padding: 0.55rem 1rem;
-  }
-
-  .contactLabel {
-    display: inline;
   }
 }
 
@@ -177,25 +200,25 @@
   justify-content: center;
   padding: 0.65rem 0.85rem;
   border-radius: 0.5rem;
-  color: var(--color-cream);
+  color: var(--color-ink);
   text-align: center;
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  text-shadow:
+    0 0 2px rgba(246, 240, 232, 1),
+    0 0 8px rgba(246, 240, 232, 0.95);
   transition:
     color 180ms ease,
     background-color 180ms ease;
 }
 
-.dropdownLink:hover {
-  color: #f0d2b0;
-  background: rgba(255, 255, 255, 0.12);
-}
-
+.dropdownLink:hover,
 .dropdownLinkActive {
-  color: #f0d2b0;
-  background: rgba(255, 255, 255, 0.16);
+  color: var(--color-ink);
+  background: rgba(246, 240, 232, 0.82);
+  text-shadow: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -22,6 +22,19 @@ export const siteConfig = {
   alternateLocales: [] as string[],
   /** Online ordering page. */
   orderUrl: "https://thelostalaskan.craverapp.com/",
+  /** iOS App Store listing. */
+  appStoreUrl: "https://apps.apple.com/us/app/the-lost-alaskan/id6758964512",
+  /** Google Play listing. */
+  playStoreUrl:
+    "https://play.google.com/store/apps/details?id=ca.craver.thelostalaskan&pcampaignid=web_share",
+  social: [
+    { label: "Instagram", href: "https://www.instagram.com/the_lost_alaskan_/" },
+    { label: "Facebook", href: "https://www.facebook.com/the.lost.alaskan/" },
+    { label: "TikTok", href: "https://www.tiktok.com/@the.lost.alaskan" },
+    { label: "YouTube", href: "https://www.youtube.com/@The_Lost_Alaskan" },
+    { label: "Pinterest", href: "https://www.pinterest.com/thelostalaskan/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/thelostalaskan" },
+  ],
   nav: [
     { href: "/", label: "Home" },
     { href: "/product", label: "Menu" },
@@ -33,7 +46,15 @@ export const siteConfig = {
   /** Twitter/X handle with @, optional; used for twitter:site / creator when set. */
   twitterHandle: undefined as string | undefined,
   /** Public social profile URLs for Organization.sameAs (LinkedIn, Instagram, etc.). */
-  sameAs: ["https://thelostalaskan.craverapp.com/"],
+  sameAs: [
+    "https://thelostalaskan.craverapp.com/",
+    "https://www.instagram.com/the_lost_alaskan_/",
+    "https://www.facebook.com/the.lost.alaskan/",
+    "https://www.tiktok.com/@the.lost.alaskan",
+    "https://www.youtube.com/@The_Lost_Alaskan",
+    "https://www.pinterest.com/thelostalaskan/",
+    "https://www.linkedin.com/in/thelostalaskan",
+  ],
   /**
    * Path to logo image for schema.org ImageObject (absolute via absoluteUrl).
    */

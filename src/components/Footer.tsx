@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
+import { SocialIcon } from "./SocialIcon";
 import styles from "./Footer.module.css";
 
 export function Footer() {
@@ -16,6 +17,19 @@ export function Footer() {
           />
           <p className={styles.brand}>{siteConfig.name}</p>
           <p className={styles.tagline}>{siteConfig.tagline}</p>
+          <p className={styles.follow}>Follow us!</p>
+          <nav className={styles.social} aria-label="Social media">
+            {siteConfig.social.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                aria-label={item.label}
+                rel="noopener noreferrer"
+              >
+                <SocialIcon name={item.label} />
+              </a>
+            ))}
+          </nav>
         </div>
 
         <nav className={styles.links} aria-label="Footer">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { AppLinks } from "@/components/AppLinks";
 import { JsonLd } from "@/components/JsonLd";
 import { MenuBoard } from "@/components/MenuBoard";
 import { PlaceholderImage } from "@/components/PlaceholderImage";
@@ -42,6 +42,7 @@ export default function ProductPage() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
+          <AppLinks />
           <MenuBoard />
         </div>
       </header>
@@ -90,14 +91,6 @@ export default function ProductPage() {
                 Duis aute irure dolor in reprehenderit in voluptate velit esse
                 cillum dolore eu fugiat nulla pariatur.
               </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "0.75rem" }}>
-                <a href={siteConfig.orderUrl} className="btn btn-primary">
-                  Order online
-                </a>
-                <Link href="/contact" className="btn btn-secondary">
-                  Contact
-                </Link>
-              </div>
             </div>
           </div>
         </div>

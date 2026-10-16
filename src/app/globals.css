@@ -227,12 +227,13 @@ img {
 }
 
 .btn-primary {
-  background: var(--color-accent);
-  color: #f8fbf9;
+  background: var(--color-caramel);
+  color: #fffaf4;
 }
 
 .btn-primary:hover {
   background: var(--color-accent-hover);
+  color: #fffaf4;
 }
 
 .btn-secondary {

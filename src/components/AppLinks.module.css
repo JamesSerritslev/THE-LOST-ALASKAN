@@ -1,0 +1,19 @@
+.heading {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--color-accent);
+}
+
+.block {
+  display: grid;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
