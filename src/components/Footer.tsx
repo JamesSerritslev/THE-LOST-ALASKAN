@@ -9,6 +9,11 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div>
+          <img
+            className={styles.logo}
+            src="/images/drive-download-20261014T165754Z-1-001/TLA%20LOGO%20Not%20Good%20Damn%20Good.png"
+            alt="The Lost Alaskan bear with a coffee, saying not good, damn good coffee."
+          />
           <p className={styles.brand}>{siteConfig.name}</p>
           <p className={styles.tagline}>{siteConfig.tagline}</p>
         </div>

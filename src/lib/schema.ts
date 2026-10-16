@@ -12,24 +12,16 @@ function organizationNode(): Record<string, unknown> {
   const logoUrl = absoluteUrl(siteConfig.logoPath);
 
   return {
-    "@type": "Organization",
+    "@type": ["Organization", "CafeOrCoffeeShop"],
     "@id": orgId(),
     name: siteConfig.name,
     legalName: siteConfig.legalName,
     url: siteConfig.url,
-    email: siteConfig.email,
-    telephone: siteConfig.phone,
+    servesCuisine: "Coffee",
+    hasMenu: siteConfig.orderUrl,
     logo: {
       "@type": "ImageObject",
       url: logoUrl,
-    },
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: siteConfig.address.street,
-      addressLocality: siteConfig.address.city,
-      addressRegion: siteConfig.address.region,
-      postalCode: siteConfig.address.postalCode,
-      addressCountry: siteConfig.address.country,
     },
     ...(siteConfig.sameAs.length > 0 ? { sameAs: siteConfig.sameAs } : {}),
     ...(siteConfig.foundingYear

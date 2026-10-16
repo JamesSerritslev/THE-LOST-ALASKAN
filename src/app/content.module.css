@@ -15,6 +15,14 @@
   display: grid;
   gap: 2rem;
   align-items: center;
+  min-width: 0;
+}
+
+.split > *,
+.splitReverse > *,
+.contactGrid > *,
+.gallery > * {
+  min-width: 0;
 }
 
 .splitReverse {
@@ -56,6 +64,31 @@
   color: var(--color-ink);
 }
 
+.menuGrid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.menuCard {
+  padding: 1.1rem 1.15rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.menuCard h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+}
+
+.menuCard p {
+  margin: 0;
+  color: var(--color-ink-muted);
+  line-height: 1.6;
+}
+
 @media (min-width: 900px) {
   .split {
     grid-template-columns: 1.05fr 0.95fr;
@@ -74,5 +107,9 @@
   .contactGrid {
     grid-template-columns: 1.1fr 0.9fr;
     align-items: start;
+  }
+
+  .menuGrid {
+    grid-template-columns: 1fr 1fr;
   }
 }

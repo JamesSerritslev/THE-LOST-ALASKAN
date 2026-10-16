@@ -25,8 +25,8 @@ export function createOgImage({ title, subtitle }: OgImageOptions) {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px",
-          background: `linear-gradient(145deg, ${siteConfig.themeColor} 0%, #1a322c 55%, #12241f 100%)`,
-          color: "#f4faf7",
+          background: `linear-gradient(145deg, ${siteConfig.themeColor} 0%, #3d2a22 55%, #171616 100%)`,
+          color: "#f6f0e8",
           fontFamily: "Georgia, 'Times New Roman', serif",
         }}
       >

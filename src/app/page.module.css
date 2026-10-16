@@ -81,6 +81,11 @@
   display: grid;
   gap: 2rem;
   align-items: center;
+  min-width: 0;
+}
+
+.split > * {
+  min-width: 0;
 }
 
 .grid3 {
@@ -94,6 +99,11 @@
   font-size: clamp(1.25rem, 3vw, 1.45rem);
 }
 
+.photoGrid {
+  display: grid;
+  gap: 1rem;
+}
+
 @media (min-width: 900px) {
   .split {
     grid-template-columns: 1.05fr 0.95fr;
@@ -101,6 +111,10 @@
   }
 
   .grid3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .photoGrid {
     grid-template-columns: repeat(3, 1fr);
   }
 }

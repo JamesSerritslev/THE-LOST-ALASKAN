@@ -1,11 +1,10 @@
 "use client";
 
-import { Mail } from "lucide-react";
+import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { photoSrc } from "@/lib/placeholders";
+import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/lib/site";
 import styles from "./Header.module.css";
 
@@ -13,6 +12,7 @@ export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -37,41 +37,62 @@ export default function Header() {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (menuRef.current?.contains(target)) return;
+      setMenuOpen(false);
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [menuOpen]);
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-[#f2f5f3]/90 backdrop-blur-md transition-all duration-300 motion-reduce:transition-none ${
-        scrolled ? "h-14 shadow-md" : "h-24"
+      className={`nav-art-bg fixed inset-x-0 top-0 z-50 ${styles.bar} ${
+        scrolled ? styles.barScrolled : styles.barTall
       }`}
     >
-      <div className="mx-auto flex h-full max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
+      <div className="mx-auto flex h-full w-full min-w-0 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
         <Link
           href="/"
           aria-label={`${siteConfig.name} home`}
-          className={`relative block shrink-0 overflow-hidden rounded-sm transition-all duration-300 motion-reduce:transition-none ${
-            scrolled ? "h-8 w-24 sm:w-28" : "h-12 w-36 sm:h-14 sm:w-44"
-          }`}
+          className="flex min-w-0 items-center gap-2.5 text-[var(--color-cream)] sm:gap-3"
         >
-          <Image
-            src={photoSrc("logo", 352, 112)}
-            alt={`${siteConfig.name} logo`}
-            fill
-            priority
-            sizes="176px"
-            className="object-cover object-left"
-          />
+          <span
+            className={`relative block shrink-0 overflow-hidden rounded-md bg-[var(--color-cream)] transition-all duration-300 motion-reduce:transition-none ${
+              scrolled ? "h-9 w-9" : "h-14 w-14"
+            }`}
+          >
+            <Image
+              src="/apple-icon.png"
+              alt=""
+              fill
+              priority
+              sizes="56px"
+              className="object-cover"
+            />
+          </span>
+          <span className="truncate font-[family-name:var(--font-display)] text-base leading-none tracking-tight sm:text-xl">
+            {siteConfig.name}
+          </span>
         </Link>
 
         <div className={styles.actions}>
-          <Link
-            href="/contact"
+          <a
+            href={siteConfig.orderUrl}
             className={styles.contactCta}
-            aria-label="Contact us"
+            aria-label="Order online"
           >
-            <Mail className={styles.contactIcon} strokeWidth={1.75} aria-hidden="true" />
-            <span className={styles.contactLabel}>Contact us</span>
-          </Link>
+            <ShoppingBag className={styles.contactIcon} strokeWidth={1.75} aria-hidden="true" />
+            <span className={styles.contactLabel}>Order online</span>
+          </a>
 
-          <div className={`${styles.menuWrap} md:hidden`}>
+          <div ref={menuRef} className={`${styles.menuWrap} md:hidden`}>
             <button
               type="button"
               className={`${styles.hamburger} ${menuOpen ? styles.open : ""}`}
@@ -87,7 +108,7 @@ export default function Header() {
 
             <nav
               id="mobile-menu"
-              className={`${styles.dropdown} ${menuOpen ? styles.dropdownOpen : ""}`}
+              className={`nav-art-bg ${styles.dropdown} ${menuOpen ? styles.dropdownOpen : ""}`}
               aria-label="Mobile menu"
               aria-hidden={!menuOpen}
             >
@@ -116,14 +137,12 @@ export default function Header() {
           </div>
 
           <nav
-            className={`hidden font-medium text-[var(--color-ink)] md:flex md:items-center md:gap-6 ${
-              scrolled ? "md:text-xs uppercase tracking-[0.12em]" : "md:text-sm"
+            className={`hidden font-medium text-[var(--color-cream)] md:flex md:items-center md:gap-6 ${
+              scrolled ? "md:text-xs uppercase tracking-[0.14em]" : "md:text-sm"
             }`}
             aria-label="Primary"
           >
-            {siteConfig.nav
-              .filter((item) => item.href !== "/contact")
-              .map((item) => {
+            {siteConfig.nav.map((item) => {
                 const active =
                   item.href === "/"
                     ? pathname === "/"
@@ -133,10 +152,8 @@ export default function Header() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`hover:text-[var(--color-accent)] ${
-                      active
-                        ? "text-[var(--color-accent)]"
-                        : "text-[var(--color-ink-muted)]"
+                    className={`hover:text-[#f0d2b0] ${
+                      active ? "text-[#f0d2b0]" : "text-[var(--color-cream)]"
                     }`}
                     aria-current={active ? "page" : undefined}
                   >

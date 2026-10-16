@@ -1,26 +1,31 @@
 "use client";
 
-import { Info, Mail, Package } from "lucide-react";
+import { Coffee, Info, Mail, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { siteConfig } from "@/lib/site";
 
-const items = [
-  { href: "/product", label: "Product", icon: Package },
-  { href: "/about", label: "About", icon: Info },
-  { href: "/contact", label: "Contact", icon: Mail },
-] as const;
+const icons: Record<string, LucideIcon> = {
+  "/about": Info,
+  "/product": Coffee,
+  "/contact": Mail,
+};
+
+const itemOrder = ["/about", "/product", "/contact"];
 
 export default function MobileBottomNav() {
   const pathname = usePathname();
+  const items = itemOrder.map((href) => siteConfig.nav.find((item) => item.href === href)!);
 
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-black/10 bg-[#f2f5f3]/95 backdrop-blur-md md:hidden"
+      className="mobile-nav md:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
       aria-label="Mobile"
     >
       <ul className="mx-auto grid max-w-lg grid-cols-3">
-        {items.map(({ href, label, icon: Icon }) => {
+        {items.map(({ href, label }) => {
+          const Icon = icons[href];
           const active = pathname.startsWith(href);
 
           return (

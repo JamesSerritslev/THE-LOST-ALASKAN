@@ -11,6 +11,9 @@ type PlaceholderImageProps = {
   height: number;
   priority?: boolean;
   className?: string;
+  /** Local or remote image. Falls back to a placeholder when omitted. */
+  src?: string;
+  objectPosition?: string;
   /** Fade in when scrolled into view. Disable for the hero (default true). */
   fadeIn?: boolean;
 };
@@ -26,6 +29,8 @@ export function PlaceholderImage({
   height,
   priority = false,
   className,
+  src,
+  objectPosition,
   fadeIn = true,
 }: PlaceholderImageProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -57,12 +62,19 @@ export function PlaceholderImage({
       className={`media-frame ${fadeIn ? "media-fade" : ""} ${visible ? "is-visible" : ""} ${className ?? ""}`}
     >
       <Image
-        src={photoSrc(id, width, height)}
+        src={src ?? photoSrc(id, width, height)}
         alt={alt}
         width={width}
         height={height}
         priority={priority}
         sizes="(max-width: 768px) 100vw, 50vw"
+        style={{
+          width: "100%",
+          height: "auto",
+          aspectRatio: "3 / 2",
+          objectFit: "cover",
+          ...(objectPosition ? { objectPosition } : {}),
+        }}
       />
     </div>
   );

@@ -6,50 +6,40 @@ import type { Metadata } from "next";
  */
 export const siteConfig = {
   /** Public brand / site name (titles, nav, OG, schema). */
-  name: "BrandName",
+  name: "THE LOST ALASKAN",
   /** Legal entity name for footer + Organization schema. */
-  legalName: "BrandName LLC",
+  legalName: "The Lost Alaskan",
   /** Short value proposition shown in hero + default titles. */
-  tagline: "A clear value proposition for your business.",
+  tagline: "Not Good... Damn Good",
   /** Default meta description target: 120–160 characters. */
   description:
-    "Replace this with a compelling 120–160 character meta description tailored to your business, services, and primary audience.",
+    "It started in Alaska—where coffee isn’t cute, it’s necessary. For early mornings, long days, cold rain, open doors, and neighbors who don’t knock.",
   /** Canonical origin with protocol, no trailing slash (e.g. https://www.example.com). */
-  url: "https://www.example.com",
+  url: "https://thelostalaskan.com",
   /** BCP 47 / Open Graph locale, underscore form (e.g. en_US). */
   locale: "en_US",
   /** Extra locales for hreflang when you add translations; leave empty for single-locale sites. */
   alternateLocales: [] as string[],
-  /** Contact email (schema + contact page). */
-  email: "hello@example.com",
-  /** Contact phone (schema + contact page). */
-  phone: "(555) 123-4567",
-  address: {
-    street: "123 Main Street",
-    city: "Your City",
-    region: "ST",
-    postalCode: "00000",
-    country: "US",
-  },
+  /** Online ordering page. */
+  orderUrl: "https://thelostalaskan.craverapp.com/",
   nav: [
     { href: "/", label: "Home" },
-    { href: "/product", label: "Product" },
+    { href: "/product", label: "Menu" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ],
   /** Alt text for default Open Graph / Twitter share images. */
-  ogImageAlt: "BrandName — website social preview",
+  ogImageAlt: "The Lost Alaskan coffee trailer",
   /** Twitter/X handle with @, optional; used for twitter:site / creator when set. */
-  twitterHandle: "@brandname" as string | undefined,
+  twitterHandle: undefined as string | undefined,
   /** Public social profile URLs for Organization.sameAs (LinkedIn, Instagram, etc.). */
-  sameAs: [] as string[],
+  sameAs: ["https://thelostalaskan.craverapp.com/"],
   /**
    * Path to logo image for schema.org ImageObject (absolute via absoluteUrl).
-   * Uses generated /icon until a real logo is added in /public.
    */
-  logoPath: "/icon",
+  logoPath: "/apple-icon.png",
   /** Browser chrome / PWA theme color (hex). Keep in sync with brand accent. */
-  themeColor: "#2f5d50",
+  themeColor: "#6b4f3b",
   /** Optional founding year for Organization.foundingDate (YYYY). */
   foundingYear: undefined as number | undefined,
   /**

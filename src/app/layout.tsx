@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Source_Sans_3 } from "next/font/google";
+import { Libre_Baskerville, Source_Sans_3 } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import Header from "@/components/Header";
 import MobileBottomNav from "@/components/MobileBottomNav";
@@ -7,8 +7,9 @@ import { PageTransition } from "@/components/PageTransition";
 import { buildMetadata, htmlLang, siteConfig } from "@/lib/site";
 import "./globals.css";
 
-const display = Fraunces({
+const display = Libre_Baskerville({
   subsets: ["latin"],
+  weight: ["400", "700"],
   variable: "--font-display",
   display: "swap",
 });
